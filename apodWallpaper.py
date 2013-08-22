@@ -108,7 +108,7 @@ r = re.search("Explanation:\s*(.*)\s*Tomorrow's picture:", htmlTEXT, re.IGNORECA
 expDESC = r.groups()[0]
 
 print("Appending description to image:\n %s\n" % expDESC)
-_ = subprocess.Popen("convert -background '#0008' -fill white -gravity center -pointsize 12 -size {0}x{1} caption:{2} {3} +swap -gravity south -append {3}".format(expW, expH, repr(expDESC), imgLOC), shell=True).communicate()
+_ = subprocess.Popen("convert -background '#0008' -fill white -gravity center -pointsize 12 -size {0}x{1} caption:{2} {3} +swap -gravity south -append {3}".format(expW, expH, repr(expDESC.encode('utf-8')), imgLOC), shell=True).communicate()
 
 #  set image as desktop wallpaper
 print("Set image as wallpaper")
