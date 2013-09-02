@@ -60,7 +60,7 @@ print("Checking whether device is connected to the internet")
 
 #  get image src
 htmlSRC = check_connection(apodURL, 10)
-img = re.search('<a\s+href=\"([a-z]+\/[[0-9]{4}\/)([a-zA-Z0-9_]+.jpg)\">\s+<img\s+src=', htmlSRC, re.IGNORECASE)
+img = re.search('<a\s+href=\"([a-z]+\/[[0-9]{4}\/)([a-zA-Z0-9_]+.jpg).*\">\s+<img\s+src=', htmlSRC, re.IGNORECASE | re.DOTALL)
 try:
     imgPATH, imgNAME = img.groups()
 except AttributeError:
